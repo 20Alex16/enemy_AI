@@ -86,8 +86,8 @@ void MatrixRooms::connectPath(typeCell start, typeCell end, typePath &path)
     unsigned room1Number = mx[start.second][start.first];
     unsigned room2Number = mx[end.second][end.first];
 
-    if (room1Number == room2Number)
-        return;
+    // if (room1Number == room2Number)
+        // return;
 
     if (room1Number > room2Number)
         return connectPath(end, start, path);
@@ -365,4 +365,20 @@ typePath MatrixRooms::getPath(unsigned room1, unsigned room2)
             currentNode = currentNode->right;
     }
     return typePath();
+}
+
+typePath MatrixRooms::getPath(typeCell cell1, typeCell cell2)
+{
+    if (cell1 == cell2)
+        return typePath();
+
+    // compute the path between the 2 rooms, but avoid walls,
+    // regardless of room number
+    typePath path = typePath();
+    connectPath(cell1, cell2, path);
+    for(auto &cell : path){
+        std::cout << cell.first << ", " << cell.second << '\n';
+    }
+
+    return path;
 }

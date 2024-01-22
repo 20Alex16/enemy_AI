@@ -70,15 +70,18 @@ private:
     std::vector<Room> rooms;
     void formBSTs();
     void connectPath(typeCell start, typeCell end, typePath &path);
-
-public:
-    MatrixRooms(unsigned size = 20);
-
     bool isValidCell(unsigned x, unsigned y, unsigned rN1, unsigned rN2){
         return mx[y][x] == rN1 || mx[y][x] == rN2;
     }
 
+public:
+    MatrixRooms(unsigned size = 20);
+
+    // path between center of two rooms
     typePath getPath(unsigned room1, unsigned room2);
+
+    // path between 2 cells given they somehow not obstructed
+    typePath getPath(typeCell cell1, typeCell cell2);
 
     void printRoomsAdjency(std::ostream &out, bool printPath = false);
     void printRooms(std::ostream &out);

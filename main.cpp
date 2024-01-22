@@ -26,13 +26,21 @@ void roomDemo(unsigned length = 20)
     rooms.displayPaths(cout);
 
     // print path from room 2 to 4
-    /*
-    for(auto cell : rooms.getPath(4,2)){
+    //*
+    for (auto cell : rooms.getPath(4, 2))
+    {
         cout << cell.first << ", " << cell.second << endl;
     }
-    */
-}
+    //*/
 
+    // get path between a margin and a neighbor room
+    //*
+    for (auto cell : rooms.getPath({7, 7}, {10, 10}))
+    {
+        cout << cell.first << ", " << cell.second << endl;
+    }
+    //*/
+}
 
 // you can run this with ./main 20
 int main(int argc, char *argv[])
@@ -41,7 +49,7 @@ int main(int argc, char *argv[])
     if (argc == 2)
     {
         length = stoi(argv[1]);
-        cout << "Length: " << length << endl;
+        // cout << "Length: " << length << endl;
     }
 
     // matrixDemo();
